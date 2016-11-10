@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RestaurantSystem.Models.ViewModel.Prato>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pratoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pratoPreco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurante.restName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurante1.restName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pratoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pratoPreco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurante.restName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurante1.restName)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.pratoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.pratoId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.pratoId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Voltar", "Index", "Restaurante")
+</p>

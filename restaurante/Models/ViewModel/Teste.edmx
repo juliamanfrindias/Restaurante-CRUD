@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TesteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Prato">
+          <Key>
+            <PropertyRef Name="pratoId" />
+          </Key>
+          <Property Name="pratoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="restId" Type="int" Nullable="false" />
+          <Property Name="pratoName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pratoPreco" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="restId" />
+          </Key>
+          <Property Name="restId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="restName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Prato__restId__276EDEB3">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
+          <End Role="Prato" Type="Self.Prato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="restId" />
+            </Principal>
+            <Dependent Role="Prato">
+              <PropertyRef Name="restId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prato__restId__286302EC">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
+          <End Role="Prato" Type="Self.Prato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="restId" />
+            </Principal>
+            <Dependent Role="Prato">
+              <PropertyRef Name="restId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TesteModelStoreContainer">
+          <EntitySet Name="Prato" EntityType="Self.Prato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Prato__restId__276EDEB3" Association="Self.FK__Prato__restId__276EDEB3">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Prato" EntitySet="Prato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prato__restId__286302EC" Association="Self.FK__Prato__restId__286302EC">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Prato" EntitySet="Prato" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TesteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Prato">
+          <Key>
+            <PropertyRef Name="pratoId" />
+          </Key>
+          <Property Name="pratoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="restId" Type="Int32" Nullable="false" />
+          <Property Name="pratoName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pratoPreco" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Prato__restId__276EDEB3" FromRole="Prato" ToRole="Restaurante" />
+          <NavigationProperty Name="Restaurante1" Relationship="Self.FK__Prato__restId__286302EC" FromRole="Prato" ToRole="Restaurante" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="restId" />
+          </Key>
+          <Property Name="restId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="restName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Prato" Relationship="Self.FK__Prato__restId__276EDEB3" FromRole="Restaurante" ToRole="Prato" />
+          <NavigationProperty Name="Prato1" Relationship="Self.FK__Prato__restId__286302EC" FromRole="Restaurante" ToRole="Prato" />
+        </EntityType>
+        <Association Name="FK__Prato__restId__276EDEB3">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
+          <End Role="Prato" Type="Self.Prato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="restId" />
+            </Principal>
+            <Dependent Role="Prato">
+              <PropertyRef Name="restId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prato__restId__286302EC">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
+          <End Role="Prato" Type="Self.Prato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="restId" />
+            </Principal>
+            <Dependent Role="Prato">
+              <PropertyRef Name="restId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TesteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Prato" EntityType="Self.Prato" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" />
+          <AssociationSet Name="FK__Prato__restId__276EDEB3" Association="Self.FK__Prato__restId__276EDEB3">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Prato" EntitySet="Prato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prato__restId__286302EC" Association="Self.FK__Prato__restId__286302EC">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Prato" EntitySet="Prato" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TesteModelStoreContainer" CdmEntityContainer="TesteEntities">
+          <EntitySetMapping Name="Prato">
+            <EntityTypeMapping TypeName="TesteModel.Prato">
+              <MappingFragment StoreEntitySet="Prato">
+                <ScalarProperty Name="pratoId" ColumnName="pratoId" />
+                <ScalarProperty Name="restId" ColumnName="restId" />
+                <ScalarProperty Name="pratoName" ColumnName="pratoName" />
+                <ScalarProperty Name="pratoPreco" ColumnName="pratoPreco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurante">
+            <EntityTypeMapping TypeName="TesteModel.Restaurante">
+              <MappingFragment StoreEntitySet="Restaurante">
+                <ScalarProperty Name="restId" ColumnName="restId" />
+                <ScalarProperty Name="restName" ColumnName="restName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
