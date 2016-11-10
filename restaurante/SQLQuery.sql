@@ -48,7 +48,7 @@ values (2, 'prato 3', '30.50')
 
 alter table [dbo].[Prato] with check add foreign key ([restId])
 references [dbo].[Restaurante] ([restId])
-delete on cascade
+on delete cascade
 go
 
 
